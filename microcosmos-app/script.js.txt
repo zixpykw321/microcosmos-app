@@ -40,7 +40,8 @@ buildButton.addEventListener("click", () => {
 
 // Подключение TON Connect
 const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-    manifestUrl: 'https://microcosmos-game.vercel.app/tonconnect-manifest.json'
+    manifestUrl: 'https://zixpykw321.github.io/microcosmos-app/
+/tonconnect-manifest.json'
 });
 
 tonConnectUI.connectButton({
@@ -64,7 +65,7 @@ buyWithTonButton.addEventListener("click", () => {
     const tonAmount = (coinAmount / 1000).toFixed(6); // 1 TON = 1000 монет
     if (tonConnectUI.wallet) {
         const transaction = {
-            to: "ВАШ_TON_КОШЕЛЁК", // Замени на свой кошелёк
+            to: "UQA52wXmxXaDJvuj0VEtZ_2fnfUk1STt0xSovDWxnRCmRr6u", // Замени на свой кошелёк
             value: (tonAmount * 1e9).toString() // Конвертируем TON в наноТОН
         };
         tonConnectUI.sendTransaction(transaction).then(() => {
@@ -110,7 +111,7 @@ inviteFriendButton.addEventListener("click", () => {
     if (window.Telegram.WebApp) {
         const tg = window.Telegram.WebApp;
         tg.shareUrl({
-            url: "https://t.me/ВАШ_БОТ_USERNAME?start=ref_12345", // Замени на ссылку своего бота
+            url: "https://t.me/MicroCosmosBot?start=ref_12345", // Замени на ссылку своего бота
             title: "Присоединяйся к MicroCosmos! 🌌"
         });
     }
