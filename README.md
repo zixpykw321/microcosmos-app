@@ -1,2 +1,0 @@
-# microcosmos-app
-Игра MicroCosmos
