@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MicroCosmos 🌌</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -15,13 +13,7 @@
             <p>Создай свою вселенную и управляй ею!</p>
         </header>
 
-        <div class="navigation">
-            <button id="homeButton">Главная</button>
-            <button id="donateButton">Донат</button>
-            <button id="friendsButton">Друзья</button>
-        </div>
-
-        <div id="homePage" class="page active">
+        <div class="game">
             <div class="stats">
                 <div class="stat">
                     <span>💰</span>
@@ -33,29 +25,10 @@
                 </div>
             </div>
 
-            <div class="world-map">
-                <div class="tile grass"></div>
-                <div class="tile water"></div>
-                <div class="tile mountain"></div>
-            </div>
-
             <div class="actions">
                 <button id="collectButton">Собрать ресурсы</button>
                 <button id="buildButton">Построить дом</button>
             </div>
-        </div>
-
-        <div id="donatePage" class="page">
-            <h2>Купить монеты</h2>
-            <input type="number" id="coinAmount" placeholder="Введите количество монет" min="1">
-            <button id="buyWithTon">Купить за TON</button>
-            <button id="buyWithStars">Купить за Stars</button>
-        </div>
-
-        <div id="friendsPage" class="page">
-            <h2>Друзья</h2>
-            <p>Пригласи друга и получи 100 монет! Друг получит 50 монет.</p>
-            <button id="inviteFriend">Пригласить друга</button>
         </div>
     </div>
     <script src="script.js"></script>
