@@ -27,6 +27,27 @@ body {
     to { opacity: 0; display: none; }
 }
 
+/* Кнопка смены языка */
+#language-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#switch-language {
+    background: transparent;
+    border: none;
+    color: #00aaff;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#switch-language:hover {
+    transform: scale(1.1);
+}
+
 /* Прогресс бар */
 #progress-bar {
     position: fixed;
@@ -43,7 +64,7 @@ body {
 #progress-fill {
     height: 100%;
     width: 0%;
-    background: #00ff88;
+    background: #00aaff;
     transition: width 0.5s;
 }
 
@@ -56,6 +77,37 @@ body {
     font-size: 0.8em;
 }
 
+/* Кастомное уведомление */
+#custom-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #00aaff;
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+    z-index: 1000;
+    display: none;
+}
+
+#alert-close {
+    background: #1a1a1a;
+    border: 1px solid #00aaff;
+    color: #00aaff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#alert-close:hover {
+    background: #00aaff;
+    color: #000;
+}
+
 /* Нижняя панель */
 .bottom-panel {
     position: fixed;
@@ -65,7 +117,7 @@ body {
     background: rgba(0, 0, 0, 0.9);
     padding: 15px;
     backdrop-filter: blur(10px);
-    border-top: 1px solid #00ff88;
+    border-top: 1px solid #00aaff;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -81,7 +133,7 @@ body {
 }
 
 .tab:hover {
-    background: #00ff88;
+    background: #00aaff;
     color: #000;
 }
 
@@ -98,14 +150,14 @@ body {
     align-items: center;
     gap: 8px;
     font-size: 1.2em;
-    color: #00ff88;
+    color: #00aaff;
 }
 
 /* Кнопки */
 button {
     background: #1a1a1a;
-    border: 1px solid #00ff88;
-    color: #00ff88;
+    border: 1px solid #00aaff;
+    color: #00aaff;
     padding: 10px 20px;
     border-radius: 25px;
     cursor: pointer;
@@ -114,38 +166,38 @@ button {
 }
 
 button:hover {
-    background: #00ff88;
+    background: #00aaff;
     color: #000;
 }
 
-/* Здания */
+/* Улучшения */
 #upgrades-content {
     position: fixed;
     bottom: 80px;
     left: 20px;
     right: 20px;
     background: rgba(0, 0, 0, 0.9);
-    border: 1px solid #00ff88;
+    border: 1px solid #00aaff;
     padding: 15px;
     border-radius: 10px;
-    color: #00ff88;
+    color: #00aaff;
     backdrop-filter: blur(10px);
 }
 
-.building {
+.upgrade {
     margin-bottom: 10px;
 }
 
-.building button {
+.upgrade button {
     background: #1a1a1a;
-    border: 1px solid #00ff88;
-    color: #00ff88;
+    border: 1px solid #00aaff;
+    color: #00aaff;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.building button:hover {
-    background: #00ff88;
+.upgrade button:hover {
+    background: #00aaff;
     color: #000;
 }
