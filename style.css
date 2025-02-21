@@ -38,7 +38,7 @@ body {
 #switch-language {
     background: transparent;
     border: none;
-    color: #00aaff;
+    color: #00ff88;
     font-size: 1.5em;
     cursor: pointer;
     transition: transform 0.3s;
@@ -65,7 +65,7 @@ body {
 #progress-fill {
     height: 100%;
     width: 0%;
-    background: #00aaff;
+    background: #00ff88;
     transition: width 0.5s;
 }
 
@@ -85,7 +85,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, 0.9);
-    border: 1px solid #00aaff;
+    border: 1px solid #00ff88;
     padding: 20px;
     border-radius: 10px;
     color: #fff;
@@ -96,8 +96,8 @@ body {
 
 #alert-close {
     background: #1a1a1a;
-    border: 1px solid #00aaff;
-    color: #00aaff;
+    border: 1px solid #00ff88;
+    color: #00ff88;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -106,7 +106,7 @@ body {
 }
 
 #alert-close:hover {
-    background: #00aaff;
+    background: #00ff88;
     color: #000;
 }
 
@@ -119,7 +119,7 @@ body {
     background: rgba(0, 0, 0, 0.9);
     padding: 15px;
     backdrop-filter: blur(10px);
-    border-top: 1px solid #00aaff;
+    border-top: 1px solid #00ff88;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -135,7 +135,7 @@ body {
 }
 
 .tab:hover {
-    background: #00aaff;
+    background: #00ff88;
     color: #000;
 }
 
@@ -152,24 +152,25 @@ body {
     align-items: center;
     gap: 8px;
     font-size: 1.2em;
-    color: #00aaff;
+    color: #00ff88;
 }
 
 /* Кнопки */
 button {
     background: #1a1a1a;
-    border: 1px solid #00aaff;
-    color: #00aaff;
+    border: 1px solid #00ff88;
+    color: #00ff88;
     padding: 10px 20px;
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s;
     font-family: 'Poppins', sans-serif;
     outline: none;
+    user-select: none;
 }
 
 button:hover {
-    background: #00aaff;
+    background: #00ff88;
     color: #000;
 }
 
@@ -184,10 +185,10 @@ button:active {
     left: 20px;
     right: 20px;
     background: rgba(0, 0, 0, 0.9);
-    border: 1px solid #00aaff;
+    border: 1px solid #00ff88;
     padding: 15px;
     border-radius: 10px;
-    color: #00aaff;
+    color: #00ff88;
     backdrop-filter: blur(10px);
     display: none; /* По умолчанию скрыто */
 }
@@ -198,15 +199,15 @@ button:active {
 
 .upgrade button {
     background: #1a1a1a;
-    border: 1px solid #00aaff;
-    color: #00aaff;
+    border: 1px solid #00ff88;
+    color: #00ff88;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .upgrade button:hover {
-    background: #00aaff;
+    background: #00ff88;
     color: #000;
 }
 
