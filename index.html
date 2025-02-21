@@ -16,10 +16,21 @@
         <h1>MICROCOSMOS</h1>
     </div>
 
+    <!-- Кнопка смены языка -->
+    <div id="language-switcher">
+        <button id="switch-language">🌐</button>
+    </div>
+
     <!-- Прогресс бар -->
     <div id="progress-bar">
         <div id="progress-fill"></div>
         <span id="progress-text">0%</span>
+    </div>
+
+    <!-- Кастомное уведомление -->
+    <div id="custom-alert">
+        <p id="alert-message"></p>
+        <button id="alert-close">ОК</button>
     </div>
 
     <!-- Основной контент -->
@@ -32,7 +43,6 @@
             <div class="tab" data-tab="resources">Ресурсы</div>
             <div class="tab" data-tab="upgrades">Улучшения</div>
             <div class="tab" data-tab="shop">Магазин</div>
-            <div class="tab" data-tab="social">Социальное</div>
         </div>
 
         <!-- Ресурсы -->
@@ -60,23 +70,23 @@
 
         <!-- Улучшения -->
         <div id="upgrades-content" class="tab-content">
-            <div class="building" data-type="stone-mine">
+            <div class="upgrade" data-type="stone-mine">
                 <p>Шахта камня (100 камней)</p>
                 <button id="build-stone-mine">Построить</button>
             </div>
-            <div class="building" data-type="energy-plant">
+            <div class="upgrade" data-type="energy-plant">
                 <p>Электростанция (500 камней)</p>
                 <button id="build-energy-plant">Построить</button>
             </div>
-            <div class="building" data-type="metal-factory">
+            <div class="upgrade" data-type="metal-factory">
                 <p>Плавильня (1000 камней, 500 энергии)</p>
                 <button id="build-metal-factory">Построить</button>
             </div>
-            <div class="building" data-type="crystal-mine">
+            <div class="upgrade" data-type="crystal-mine">
                 <p>Кристаллическая шахта (2000 камней, 1000 энергии)</p>
                 <button id="build-crystal-mine">Построить</button>
             </div>
-            <div class="building" data-type="spaceport">
+            <div class="upgrade" data-type="spaceport">
                 <p>Космопорт (5000 камней, 2000 энергии, 500 металла)</p>
                 <button id="build-spaceport">Построить</button>
             </div>
