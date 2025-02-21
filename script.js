@@ -112,3 +112,32 @@ function updateUI() {
         document.getElementById('build-spaceport').textContent = "Build";
     }
 }
+// Инициализация Three.js
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('planet-container').appendChild(renderer.domElement);
+
+// Создание планеты
+const planetGeometry = new THREE.SphereGeometry(5, 64, 64);
+const planetTexture = new THREE.TextureLoader().load('https://i.imgur.com/planet_texture.jpg'); // Замените на вашу текстуру
+const planetMaterial = new THREE.MeshPhongMaterial({ map: planetTexture });
+const planet = new THREE.Mesh(planetGeometry, planetMaterial);
+scene.add(planet);
+
+// Освещение
+const light = new THREE.PointLight(0xffffff, 1.5);
+light.position.set(10, 10, 10);
+scene.add(light);
+
+// Позиция камеры
+camera.position.z = 15;
+
+// Анимация
+function animate() {
+    requestAnimationFrame(animate);
+    planet.rotation.y += 0.005; // Вращение планеты
+    renderer.render(scene, camera);
+}
+animate();
