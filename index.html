@@ -3,43 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MicroCosmos 🌌</title>
+    <title>MicroCosmos</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>MicroCosmos 🌌</h1>
-            <p>Создай свою вселенную и управляй ею!</p>
-        </header>
+    <!-- Загрузочный экран -->
+    <div id="loading-screen">
+        <h1>MICROCOSMOS</h1>
+    </div>
 
+    <!-- Прогресс бар -->
+    <div id="progress-bar">
+        <div id="progress-fill"></div>
+        <span id="progress-text">0%</span>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="app">
+        <!-- 3D-сцена -->
         <div id="planet-container"></div>
 
-        <div class="game">
-            <div class="stats">
-                <div class="stat">
-                    <span>💰</span>
-                    <span id="coins">0</span>
+        <!-- Нижняя панель -->
+        <div class="bottom-panel">
+            <div class="tab" data-tab="resources">Ресурсы</div>
+            <div class="tab" data-tab="upgrades">Улучшения</div>
+            <div class="tab" data-tab="shop">Магазин</div>
+            <div class="tab" data-tab="social">Социальное</div>
+        </div>
+
+        <!-- Ресурсы -->
+        <div id="resources-content" class="tab-content">
+            <div class="resources">
+                <div class="resource" data-type="stone">
+                    <span>🪨</span>
+                    <span id="stone-count">0</span>
                 </div>
-                <div class="stat">
-                    <span>🌱</span>
-                    <span id="resources">0</span>
+                <div class="resource" data-type="energy">
+                    <span>⚡</span>
+                    <span id="energy-count">0</span>
+                </div>
+                <div class="resource" data-type="metal">
+                    <span>🔩</span>
+                    <span id="metal-count">0</span>
+                </div>
+                <div class="resource" data-type="crystal">
+                    <span>💎</span>
+                    <span id="crystal-count">0</span>
                 </div>
             </div>
+            <button id="collectButton">Собрать</button>
+        </div>
 
-            <div class="actions">
-                <button id="collectButton">Собрать ресурсы</button>
-                <button id="buildButton">Построить дом</button>
-                <button id="donateButton">Купить монеты за TON</button>
-                <button id="inviteFriend">Пригласить друга</button>
+        <!-- Улучшения -->
+        <div id="upgrades-content" class="tab-content">
+            <div class="building" data-type="stone-mine">
+                <p>Шахта камня (100 камней)</p>
+                <button id="build-stone-mine">Построить</button>
+            </div>
+            <div class="building" data-type="energy-plant">
+                <p>Электростанция (500 камней)</p>
+                <button id="build-energy-plant">Построить</button>
+            </div>
+            <div class="building" data-type="metal-factory">
+                <p>Плавильня (1000 камней, 500 энергии)</p>
+                <button id="build-metal-factory">Построить</button>
+            </div>
+            <div class="building" data-type="crystal-mine">
+                <p>Кристаллическая шахта (2000 камней, 1000 энергии)</p>
+                <button id="build-crystal-mine">Построить</button>
+            </div>
+            <div class="building" data-type="spaceport">
+                <p>Космопорт (5000 камней, 2000 энергии, 500 металла)</p>
+                <button id="build-spaceport">Построить</button>
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
