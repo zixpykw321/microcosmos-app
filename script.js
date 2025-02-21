@@ -1,99 +1,65 @@
-// Инициализация Three.js
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById('planet-container').appendChild(renderer.domElement);
+// Ресурсы
+const resources = {
+    stone: 0,
+    energy: 0,
+    metal: 0,
+    crystal: 0,
+};
 
-// Создание планеты
-const planetGeometry = new THREE.SphereGeometry(5, 32, 32);
-const planetTexture = new THREE.TextureLoader().load('https://i.imgur.com/XYZ1234.png'); // Замени на текстуру планеты
-const planetMaterial = new THREE.MeshPhongMaterial({ map: planetTexture });
-const planet = new THREE.Mesh(planetGeometry, planetMaterial);
-scene.add(planet);
+// Здания
+const buildings = {
+    stoneMine: false,
+    energyPlant: false,
+    metalFactory: false,
+    crystalMine: false,
+    spaceport: false,
+};
 
-// Освещение
-const light = new THREE.DirectionalLight(0xffffff, 1);
-light.position.set(5, 5, 5).normalize();
-scene.add(light);
+// Прогресс заполнения планеты
+let planetProgress = 0;
 
-// Позиция камеры
-camera.position.z = 15;
-
-// Анимация вращения планеты
-function animate() {
-    requestAnimationFrame(animate);
-    planet.rotation.y += 0.005;
-    renderer.render(scene, camera);
-}
-animate();
-
-// Обработка событий
-const coinsElement = document.getElementById("coins");
-const resourcesElement = document.getElementById("resources");
-const collectButton = document.getElementById("collectButton");
-const buildButton = document.getElementById("buildButton");
-const donateButton = document.getElementById("donateButton");
-const inviteFriendButton = document.getElementById("inviteFriend");
-
-let coins = 0;
-let resources = 0;
-
-function updateUI() {
-    coinsElement.textContent = coins;
-    resourcesElement.textContent = resources;
+// Обновление прогресса
+function updateProgress() {
+    const progressFill = document.getElementById('progress-fill');
+    const progressText = document.getElementById('progress-text');
+    progressFill.style.width = `${planetProgress}%`;
+    progressText.textContent = `${planetProgress}%`;
 }
 
-collectButton.addEventListener("click", () => {
-    resources += 1;
-    updateUI();
-});
-
-buildButton.addEventListener("click", () => {
-    if (resources >= 5) {
-        resources -= 5;
-        coins += 10;
+// Логика постройки зданий
+document.getElementById('build-stone-mine').addEventListener('click', () => {
+    if (resources.stone >= 100) {
+        resources.stone -= 100;
+        buildings.stoneMine = true;
+        planetProgress += 10; // Каждое здание добавляет 10% к прогрессу
+        updateProgress();
         updateUI();
+        alert("Шахта камня построена!");
     } else {
-        alert("Недостаточно ресурсов!");
+        alert("Недостаточно камней!");
     }
 });
 
-// Донат через TON
-const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-    manifestUrl: 'https://ваш-сайт/tonconnect-manifest.json'
-});
-
-donateButton.addEventListener("click", () => {
-    if (tonConnectUI.wallet) {
-        const transaction = {
-            to: "ВАШ_TON_КОШЕЛЁК", // Замени на свой кошелёк
-            value: "1000000000" // 1 TON в наноТОН
-        };
-        tonConnectUI.sendTransaction(transaction).then(() => {
-            coins += 1000; // Игрок получает 1000 монет
-            updateUI();
-            alert("Спасибо за донат! Вы получили 1000 монет.");
-        });
-    } else {
-        alert("Подключите кошелёк для доната.");
+// Логика сбора ресурсов
+let lastCollectionTime = 0;
+document.getElementById('collectButton').addEventListener('click', () => {
+    const now = Date.now();
+    if (now - lastCollectionTime < 3600000) {
+        alert("Собирать можно только 1 раз в час!");
+        return;
     }
+    if (buildings.stoneMine) resources.stone += 1;
+    if (buildings.energyPlant) resources.energy += 1;
+    if (buildings.metalFactory) resources.metal += 1;
+    if (buildings.crystalMine) resources.crystal += 1;
+    updateUI();
+    lastCollectionTime = now;
 });
 
-// Реферальная система
-inviteFriendButton.addEventListener("click", () => {
-    if (window.Telegram.WebApp) {
-        const tg = window.Telegram.WebApp;
-        tg.shareUrl({
-            url: "https://t.me/ВАШ_БОТ_USERNAME?start=ref_12345", // Замени на ссылку своего бота
-            title: "Присоединяйся к MicroCosmos! 🌌"
-        });
-    }
-});
-
-// Обработка изменения размера окна
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
+// Обновление интерфейса
+function updateUI() {
+    document.getElementById('stone-count').textContent = resources.stone;
+    document.getElementById('energy-count').textContent = resources.energy;
+    document.getElementById('metal-count').textContent = resources.metal;
+    document.getElementById('crystal-count').textContent = resources.crystal;
+}
