@@ -6,19 +6,23 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById('planet-container').appendChild(renderer.domElement);
 
 // Создание планеты
-const planetGeometry = new THREE.SphereGeometry(5, 64, 64);
+const planetGeometry = new THREE.SphereGeometry(10, 64, 64); // Увеличиваем радиус планеты
 const planetTexture = new THREE.TextureLoader().load('https://i.imgur.com/planet_texture.jpg'); // Замените на вашу текстуру
 const planetMaterial = new THREE.MeshPhongMaterial({ map: planetTexture });
 const planet = new THREE.Mesh(planetGeometry, planetMaterial);
 scene.add(planet);
 
 // Освещение
-const light = new THREE.PointLight(0xffffff, 1.5);
+const light = new THREE.PointLight(0xffffff, 1); // Уменьшаем интенсивность света
 light.position.set(10, 10, 10);
 scene.add(light);
 
+// Добавляем AmbientLight для мягкого освещения
+const ambientLight = new THREE.AmbientLight(0x404040); // Мягкий свет
+scene.add(ambientLight);
+
 // Позиция камеры
-camera.position.z = 15;
+camera.position.z = 30; // Отодвигаем камеру дальше
 
 // Анимация
 function animate() {
