@@ -77,6 +77,17 @@ document.getElementById('switch-language').addEventListener('click', () => {
     updateUI();
 });
 
+// Переключение вкладок
+document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        const tabName = tab.getAttribute('data-tab');
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.style.display = 'none';
+        });
+        document.getElementById(`${tabName}-content`).style.display = 'block';
+    });
+});
+
 // Обновление интерфейса
 function updateUI() {
     document.getElementById('stone-count').textContent = resources.stone;
