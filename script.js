@@ -139,3 +139,5 @@ function updateUI() {
     document.querySelector('[data-type="metal"]').innerHTML = `<span>🔩</span><span id="metal-count">0</span> ${translation.metal}`;
     document.querySelector('[data-type="crystal"]').innerHTML = `<span>💎</span><span id="crystal-count">0</span> ${translation.crystal}`;
 }
+let tg = window.Telegram.WebApp;
+tg.requestFullscreen();
